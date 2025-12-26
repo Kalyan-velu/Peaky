@@ -1,4 +1,4 @@
-# Peaky - A Simple Editor
+# Peaky - An Editor
 
 This is my hobby project to create a simple editor with a focus on simplicity and ease of use.
 
