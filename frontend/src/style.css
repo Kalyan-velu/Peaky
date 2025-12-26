@@ -1,36 +1,179 @@
+@import '@shoelace-style/shoelace/dist/themes/light.css';
+@import '@shoelace-style/shoelace/dist/themes/dark.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
-    --bg-color: rgba(27, 38, 54, 1);
-    --text-color: white;
-    --toolbar-bg: #1e293b;
-    --toolbar-height: 35px;
-    --hover-bg: rgba(255, 255, 255, 0.1);
-    --close-hover-bg: #e81123;
-    --font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  /* Shoelace overrides */
+  --sl-font-sans:
+    'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* Global Variables */
+  --toolbar-height: 2rem;
+  --font-family: var(--sl-font-sans);
+}
+
+:host,
+.sl-theme-light {
+  color-scheme: light;
+
+  /* Theme Variables mapped to Shoelace tokens */
+  --bg-color: var(--sl-color-neutral-0);
+  --text-color: var(--sl-color-neutral-900);
+  --toolbar-bg: var(--sl-color-neutral-100);
+  --hover-bg: var(--sl-color-neutral-200);
+  --close-hover-bg: var(--sl-color-danger-600);
+  --border-color: var(--sl-color-neutral-200);
+
+  /* Shoelace Primary Color (Blue) */
+  --sl-color-primary-50: #eff6ff;
+  --sl-color-primary-100: #dbeafe;
+  --sl-color-primary-200: #bfdbfe;
+  --sl-color-primary-300: #93c5fd;
+  --sl-color-primary-400: #60a5fa;
+  --sl-color-primary-500: #3b82f6;
+  --sl-color-primary-600: #2563eb;
+  --sl-color-primary-700: #1d4ed8;
+  --sl-color-primary-800: #1e40af;
+  --sl-color-primary-900: #1e3a8a;
+  --sl-color-primary-950: #172554;
+
+  /* Shoelace Neutral Color (Slate - Standard Orientation) */
+  --sl-color-neutral-0: #ffffff;
+  --sl-color-neutral-50: #f8fafc;
+  --sl-color-neutral-100: #f1f5f9;
+  --sl-color-neutral-200: #e2e8f0;
+  --sl-color-neutral-300: #cbd5e1;
+  --sl-color-neutral-400: #94a3b8;
+  --sl-color-neutral-500: #64748b;
+  --sl-color-neutral-600: #475569;
+  --sl-color-neutral-700: #334155;
+  --sl-color-neutral-800: #1e293b;
+  --sl-color-neutral-900: #0f172a;
+  --sl-color-neutral-950: #020617;
+  --sl-color-neutral-1000: #000000;
+
+  /* Shoelace Danger Color */
+  --sl-color-danger-50: #fef2f2;
+  --sl-color-danger-100: #fee2e2;
+  --sl-color-danger-200: #fecaca;
+  --sl-color-danger-300: #fca5a5;
+  --sl-color-danger-400: #f87171;
+  --sl-color-danger-500: #ef4444;
+  --sl-color-danger-600: #e81123;
+  --sl-color-danger-700: #b91c1c;
+  --sl-color-danger-800: #991b1b;
+  --sl-color-danger-900: #7f1d1d;
+  --sl-color-danger-950: #450a0a;
+}
+
+:host,
+.sl-theme-dark {
+  color-scheme: dark;
+
+  /* Theme Variables mapped to Shoelace tokens */
+  --bg-color: var(--sl-color-neutral-50);
+  --text-color: var(--sl-color-neutral-900);
+  --toolbar-bg: var(--sl-color-neutral-100);
+  --hover-bg: var(--sl-color-neutral-200);
+  --close-hover-bg: var(--sl-color-danger-600);
+  --border-color: var(--sl-color-neutral-200);
+
+  /* Shoelace Primary Color (Sky Blue) */
+  --sl-color-primary-50: #f0f9ff;
+  --sl-color-primary-100: #e0f2fe;
+  --sl-color-primary-200: #bae6fd;
+  --sl-color-primary-300: #7dd3fc;
+  --sl-color-primary-400: #38bdf8;
+  --sl-color-primary-500: #0ea5e9;
+  --sl-color-primary-600: #0284c7;
+  --sl-color-primary-700: #0369a1;
+  --sl-color-primary-800: #075985;
+  --sl-color-primary-900: #0c4a6e;
+  --sl-color-primary-950: #082f49;
+
+  /* Shoelace Neutral Color (Slate - Inverted Orientation for Dark Mode) */
+  --sl-color-neutral-0: #000000;
+  --sl-color-neutral-50: #020617;
+  --sl-color-neutral-100: #0f172a;
+  --sl-color-neutral-200: #1e293b;
+  --sl-color-neutral-300: #334155;
+  --sl-color-neutral-400: #475569;
+  --sl-color-neutral-500: #64748b;
+  --sl-color-neutral-600: #94a3b8;
+  --sl-color-neutral-700: #cbd5e1;
+  --sl-color-neutral-800: #e2e8f0;
+  --sl-color-neutral-900: #f1f5f9;
+  --sl-color-neutral-950: #f8fafc;
+  --sl-color-neutral-1000: #ffffff;
+
+  /* Shoelace Danger Color */
+  --sl-color-danger-50: #450a0a;
+  --sl-color-danger-100: #7f1d1d;
+  --sl-color-danger-200: #991b1b;
+  --sl-color-danger-300: #b91c1c;
+  --sl-color-danger-400: #dc2626;
+  --sl-color-danger-500: #ef4444;
+  --sl-color-danger-600: #e81123;
+  --sl-color-danger-700: #f87171;
+  --sl-color-danger-800: #fca5a5;
+  --sl-color-danger-900: #fecaca;
+  --sl-color-danger-950: #fef2f2;
 }
 
 html {
-    background-color: var(--bg-color);
-    text-align: center;
-    color: var(--text-color);
+  background-color: var(--bg-color);
+  text-align: center;
+  /*color: var(--text-color);*/
+  font-size: 16px;
+  overflow: hidden;
 }
 
 body {
-    margin: 0;
-    color: var(--text-color);
-    font-family: var(--font-family), sans-serif;
+  height: 100dvh;
+  width: 100dvw;
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--font-family), sans-serif;
+}
+
+main-view {
+  display: block;
+  height: 100%;
+}
+
+main{
+  height:100%;
+}
+editor-view{
+  position: relative;
+  display: block;
+  height:100%;
+  #container{
+    position: absolute;
+    width:100%;
+    height: 100%;
+  }
 }
 
 @font-face {
-    font-family: "Nunito";
-    font-style: normal;
-    font-weight: 400;
-    src: local(""),
-    url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local(''),
+    url('assets/fonts/nunito-v16-latin-regular.woff2') format('woff2');
 }
 
 #app {
-    height: 100vh;
-    text-align: center;
+  height: 100vh;
+  text-align: center;
+}
+
+:not(:defined) {
+  visibility: hidden;
 }
