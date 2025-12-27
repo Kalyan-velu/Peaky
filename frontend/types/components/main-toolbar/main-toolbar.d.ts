@@ -9,7 +9,7 @@ export declare class MainToolbar extends LitElement {
     private _openFolder;
     private _toggleTheme;
     private _isMaximized;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "WebWorker"],
     "declaration": true,
     "emitDeclarationOnly": true,
+    "baseUrl": "./",
     "outDir": "./types",
     "strict": true,
+    "allowJs": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
@@ -26,7 +28,13 @@
           "no-unknown-tag-name": "off"
         }
       }
-    ]
+    ],
+    "paths": {
+      "@/*": ["src/*"],
+      "@/components/*": ["src/components/*"],
+      "@/go-runtime/*": ["wailsjs/go/*"],
+      "@/wailsjs-runtime/*": ["wailsjs/runtime/*"]
+    }
   },
   "include": ["src/**/*.ts"],
   "references": [

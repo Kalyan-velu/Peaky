@@ -1,9 +1,9 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { WindowIsMaximised } from '../../../wailsjs/runtime';
-import { SelectFolder } from '../../../wailsjs/go/main/App';
 import 'iconify-icon/dist/iconify-icon';
 import './window-controls';
+import { OpenFolder } from '../../../wailsjs/go/editor/FileHandler';
 
 @customElement('main-toolbar')
 export class MainToolbar extends LitElement {
@@ -121,7 +121,7 @@ export class MainToolbar extends LitElement {
   }
 
   private async _openFolder() {
-    const folder = await SelectFolder();
+    const folder = await OpenFolder();
     if (folder) {
       this.projectTitle = folder.split(/[\\/]/).pop() || folder;
       this.dispatchEvent(

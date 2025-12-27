@@ -1,5 +1,4 @@
 import { html, LitElement } from 'lit';
-import { Greet } from '../wailsjs/go/main/App';
 import { customElement, property } from 'lit/decorators.js';
 import './style.css';
 import 'iconify-icon';
@@ -24,14 +23,12 @@ export class MainView extends LitElement {
     if (e instanceof CustomEvent) {
       folder = e.detail;
     } else {
-      const { SelectFolder } = await import('../wailsjs/go/main/App');
+      const { OpenFolder } = await import('@/go-runtime/editor/FileHandler');
 
-      folder = await SelectFolder();
+      folder = await OpenFolder();
     }
     if (folder) {
-      Greet(`Folder Selected: ${folder}`).then((result) => {
-        this.resultText = result;
-      });
+      this.resultText = folder;
     }
   }
 
