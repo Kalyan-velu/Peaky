@@ -28,7 +28,7 @@ self.MonacoEnvironment = {
 };
 
 @customElement('editor-view')
-export class EditorView extends LitElement {
+export class Editor extends LitElement {
   private editor?: monaco.editor.ICodeEditor;
 
   @query('#container')
@@ -58,6 +58,6 @@ export class EditorView extends LitElement {
 
 declare global {
   export interface HTMLElementTagNameMap {
-    'editor-view': EditorView;
+    'editor-view': Editor;
   }
 }
