@@ -23,7 +23,7 @@
   --toolbar-height: fit-content;
 
   /* Base Colors */
-  --mint-cream: hsla(140, 22%, 92%, 1);
+  --mint-cream: hsl(180, 63%, 83%);
   --frozen-water: hsla(154, 68%, 86%, 1);
   --tea-green: hsla(110, 53%, 82%, 1);
   --celadon: hsla(108, 23%, 70%, 1);
@@ -47,6 +47,9 @@
   --close-hover-bg: var(--sl-color-danger-600);
   --border-color: var(--sl-color-neutral-200);
 
+
+  /*Tabs Panel Layout*/
+  --tab-panel-bg: inherit;
   /* Shoelace Overrides - Primary (Blue) */
   --sl-color-primary-50: #eff6ff;
   --sl-color-primary-100: #dbeafe;
@@ -174,16 +177,12 @@ body {
    Layout
    ========================================================================== */
 main-view {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  height: 100%;
 }
 
-main {
-  display: flex;
-  writing-mode: vertical-rl;
-  width: 100%;
-  flex: 1;
+main{
+  height:100%;
 }
 
 /* ==========================================================================
@@ -191,17 +190,21 @@ main {
    ========================================================================== */
 
 .editor-wrapper {
+  position: relative;
   display: flex;
+  flex-direction: column;
   writing-mode: horizontal-tb;
   flex: 1;
   border: 1px solid var(--border-color);
   margin: 0.5em;
   border-radius: var(--sl-border-radius-large);
   overflow: hidden;
+
   editor-view {
     position: relative;
     display: block;
     flex: 1;
+
     #container {
       position: absolute;
       width: 100%;

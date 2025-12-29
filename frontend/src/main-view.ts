@@ -7,6 +7,8 @@ import './components/editor-view/editor';
 import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
 import '@shoelace-style/shoelace/dist/shoelace.js';
 import '@shoelace-style/shoelace/dist/components/icon/icon.js';
+import './components/editor-view/tabs-panel';
+
 
 setBasePath('@shoelace-style/shoelace/dist/');
 
@@ -39,6 +41,7 @@ export class MainView extends LitElement {
       <main>
         <div class="editor-wrapper">
           <editor-view></editor-view>
+          <tabs-panel></tabs-panel>
         </div>
       </main>
     `;
