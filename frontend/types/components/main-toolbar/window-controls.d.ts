@@ -5,7 +5,7 @@ export declare class WindowControls extends LitElement {
     maximized: boolean;
     constructor();
     private _checkWindowIsMaximized;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

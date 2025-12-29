@@ -8,13 +8,13 @@
     ".": "./dist/my-element.es.js"
   },
   "types": "types/my-element.d.ts",
-  "files": [
-    "dist",
-    "types"
-  ],
+  "files": ["dist", "types"],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "biome:check": "pnpm exec biome check --write --unsafe ./src",
+    "biome:lint": "pnpm exec biome lint --write --unsafe ./src",
+    "biome:format": "pnpm exec biome format --write ./src"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.20.1",
@@ -23,8 +23,13 @@
     "monaco-editor": "^0.55.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.10",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "^4.6.4",
-    "vite": "7.1.11"
+    "typescript": "latest",
+    "vite": "7.1.11",
+    "vite-tsconfig-paths": "^6.0.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
   }
 }

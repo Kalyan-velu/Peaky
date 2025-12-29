@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "WebWorker"],
     "declaration": true,
     "emitDeclarationOnly": true,
+    "baseUrl": "./",
     "outDir": "./types",
     "strict": true,
+    "allowJs": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
@@ -22,13 +24,21 @@
       {
         "name": "ts-lit-plugin",
         "strict": true,
+        "globalAttributes": ["no-accessors", "no-model", "no-target-lightdom", "icon"],
         "rules": {
           "no-unknown-tag-name": "off"
         }
       }
-    ]
+    ],
+    "paths": {
+      "@/*": ["src/*"],
+      "@/components/*": ["src/components/*"],
+      "@/go-runtime/*": ["wailsjs/go/*"],
+      "@/wailsjs-runtime/*": ["wailsjs/runtime/*"]
+    }
   },
   "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"],
   "references": [
     {
       "path": "./tsconfig.node.json"

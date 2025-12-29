@@ -1,5 +1,4 @@
 import { html, LitElement } from 'lit';
-import { Greet } from '../wailsjs/go/main/App';
 import { customElement, property } from 'lit/decorators.js';
 import './style.css';
 import 'iconify-icon';
@@ -7,6 +6,7 @@ import './components/main-toolbar/main-toolbar';
 import './components/editor-view/editor';
 import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
 import '@shoelace-style/shoelace/dist/shoelace.js';
+import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 
 setBasePath('@shoelace-style/shoelace/dist/');
 
@@ -24,14 +24,12 @@ export class MainView extends LitElement {
     if (e instanceof CustomEvent) {
       folder = e.detail;
     } else {
-      const { SelectFolder } = await import('../wailsjs/go/main/App');
+      const { OpenFolder } = await import('@/go-runtime/editor/FileHandler');
 
-      folder = await SelectFolder();
+      folder = await OpenFolder();
     }
     if (folder) {
-      Greet(`Folder Selected: ${folder}`).then((result) => {
-        this.resultText = result;
-      });
+      this.resultText = folder;
     }
   }
 
@@ -39,7 +37,9 @@ export class MainView extends LitElement {
     return html`
       <main-toolbar @folder-selected="${this._handleFolderSelected}"></main-toolbar>
       <main>
-        <editor-view></editor-view>
+        <div class="editor-wrapper">
+          <editor-view></editor-view>
+        </div>
       </main>
     `;
   }

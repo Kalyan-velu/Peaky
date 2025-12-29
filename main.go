@@ -1,7 +1,9 @@
 package main
 
 import (
+	"context"
 	"embed"
+	"peaky-editor/editor"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -12,7 +14,7 @@ import (
 var assets embed.FS
 
 func main() {
-	app := NewApp()
+	fileHandler := editor.NewFileHandler()
 
 	err := wails.Run(&options.App{
 		Title:  "Peaky",
@@ -25,9 +27,11 @@ func main() {
 		CSSDragProperty:  "--wails-draggable", // This tells Wails which CSS property makes an element draggable
 		CSSDragValue:     "drag",
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
-		OnStartup:        app.startup,
+		OnStartup: func(ctx context.Context) {
+			fileHandler.Startup(ctx)
+		},
 		Bind: []interface{}{
-			app,
+			fileHandler,
 		},
 	})
 

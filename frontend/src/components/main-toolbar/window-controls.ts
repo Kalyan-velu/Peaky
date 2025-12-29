@@ -1,11 +1,11 @@
 import { css, html, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 import {
   Quit,
   WindowIsMaximised,
   WindowMinimise,
   WindowToggleMaximise,
 } from '../../../wailsjs/runtime';
-import { customElement, property } from 'lit/decorators.js';
 import 'iconify-icon/dist/iconify-icon';
 
 @customElement('window-controls')
