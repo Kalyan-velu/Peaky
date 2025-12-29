@@ -47,9 +47,9 @@
   --close-hover-bg: var(--sl-color-danger-600);
   --border-color: var(--sl-color-neutral-200);
 
+
   /*Tabs Panel Layout*/
   --tab-panel-bg: inherit;
-
   /* Shoelace Overrides - Primary (Blue) */
   --sl-color-primary-50: #eff6ff;
   --sl-color-primary-100: #dbeafe;

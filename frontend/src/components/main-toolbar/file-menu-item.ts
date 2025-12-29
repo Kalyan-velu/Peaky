@@ -10,6 +10,7 @@ import 'iconify-icon/dist/iconify-icon';
 import '@shoelace-style/shoelace/dist/components/icon-button/icon-button';
 import { OpenFolder } from '@/go-runtime/editor/FileHandler';
 
+
 @customElement('file-menu-item')
 export class FileMenuItem extends LitElement {
   static styles = css`

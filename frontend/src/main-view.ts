@@ -9,6 +9,7 @@ import '@shoelace-style/shoelace/dist/shoelace.js';
 import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 import './components/editor-view/tabs-panel';
 
+
 setBasePath('@shoelace-style/shoelace/dist/');
 
 @customElement('main-view')
