@@ -38,15 +38,10 @@ export class EditorView extends LitElement {
     return this;
   }
 
-  render() {
-    return html`<div id="container"></div> `;
-  }
-
   firstUpdated() {
     this.editor = monaco.editor.create(this.container, {
       value: `<div>Hello World</div>`,
       language: 'html',
-      theme: 'vs-dark',
       automaticLayout: true,
     });
   }
@@ -55,6 +50,9 @@ export class EditorView extends LitElement {
     this.editor?.dispose();
     this.editor = undefined;
     super.disconnectedCallback();
+  }
+  render() {
+    return html`<div id="container"></div> `;
   }
 }
 

@@ -6,6 +6,7 @@ import './components/main-toolbar/main-toolbar';
 import './components/editor-view/editor';
 import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
 import '@shoelace-style/shoelace/dist/shoelace.js';
+import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 
 setBasePath('@shoelace-style/shoelace/dist/');
 
@@ -36,7 +37,9 @@ export class MainView extends LitElement {
     return html`
       <main-toolbar @folder-selected="${this._handleFolderSelected}"></main-toolbar>
       <main>
-        <editor-view></editor-view>
+        <div class="editor-wrapper">
+          <editor-view></editor-view>
+        </div>
       </main>
     `;
   }

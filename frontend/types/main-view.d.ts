@@ -4,6 +4,7 @@ import 'iconify-icon';
 import './components/main-toolbar/main-toolbar';
 import './components/editor-view/editor';
 import '@shoelace-style/shoelace/dist/shoelace.js';
+import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 export declare class MainView extends LitElement {
     createRenderRoot(): this;
     resultText: string;

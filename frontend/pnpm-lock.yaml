@@ -28,14 +28,14 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       typescript:
-        specifier: ^4.6.4
-        version: 4.9.5
+        specifier: latest
+        version: 5.9.3
       vite:
         specifier: 7.1.11
         version: 7.1.11
       vite-tsconfig-paths:
         specifier: ^6.0.3
-        version: 6.0.3(typescript@4.9.5)(vite@7.1.11)
+        version: 6.0.3(typescript@5.9.3)(vite@7.1.11)
 
 packages:
 
@@ -695,13 +695,13 @@ packages:
       typescript:
         optional: true
 
-  typescript@4.9.5:
-    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
-
   typescript@5.2.2:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -1335,19 +1335,19 @@ snapshots:
 
   ts-simple-type@2.0.0-next.0: {}
 
-  tsconfck@3.1.6(typescript@4.9.5):
+  tsconfck@3.1.6(typescript@5.9.3):
     optionalDependencies:
-      typescript: 4.9.5
-
-  typescript@4.9.5: {}
+      typescript: 5.9.3
 
   typescript@5.2.2: {}
 
-  vite-tsconfig-paths@6.0.3(typescript@4.9.5)(vite@7.1.11):
+  typescript@5.9.3: {}
+
+  vite-tsconfig-paths@6.0.3(typescript@5.9.3)(vite@7.1.11):
     dependencies:
       debug: 4.4.3
       globrex: 0.1.2
-      tsconfck: 3.1.6(typescript@4.9.5)
+      tsconfck: 3.1.6(typescript@5.9.3)
     optionalDependencies:
       vite: 7.1.11
     transitivePeerDependencies:
