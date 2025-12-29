@@ -8,6 +8,7 @@ import '@shoelace-style/shoelace/dist/components/icon/icon';
 import { customElement } from 'lit/decorators.js';
 import 'iconify-icon/dist/iconify-icon';
 import '@shoelace-style/shoelace/dist/components/icon-button/icon-button';
+import { OpenFolder } from '@/go-runtime/editor/FileHandler';
 
 @customElement('file-menu-item')
 export class FileMenuItem extends LitElement {
@@ -37,27 +38,36 @@ export class FileMenuItem extends LitElement {
     }
   `;
 
-  // private async _openFolder() {
-  //   const folder = await OpenFolder();
-  //   if (folder) {
-  //     this.dispatchEvent(
-  //       new CustomEvent('folder-selected', {
-  //         detail: folder,
-  //         bubbles: true,
-  //         composed: true,
-  //       })
-  //     );
-  //   }
-  // }
+  private async _openFolder() {
+    const folder = await OpenFolder();
+    if (folder) {
+      this.dispatchEvent(
+        new CustomEvent('folder-selected', {
+          detail: folder,
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
+  }
+
+  // TODO - Find a way to get the menu item value from the dropdown
+  private async _handleMenuSelect(event: CustomEvent) {
+    const item = event.detail.item;
+    console.log(event, item);
+    if (item.value === 'open') {
+      await this._openFolder();
+    }
+  }
 
   protected render() {
     return html`
       <sl-dropdown>
         <button class="menu-button" slot="trigger">File</button>
-        <sl-menu>
-          <sl-menu-item>New</sl-menu-item>
-          <sl-menu-item>Open ...</sl-menu-item>
-          <sl-menu-item>Close Project</sl-menu-item>
+        <sl-menu @click="${this._handleMenuSelect}">
+          <sl-menu-item value="new">New</sl-menu-item>
+          <sl-menu-item value="open">Open ...</sl-menu-item>
+          <sl-menu-item value="close">Close Project</sl-menu-item>
         </sl-menu>
       </sl-dropdown>
     `;
