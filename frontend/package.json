@@ -8,7 +8,10 @@
     ".": "./dist/my-element.es.js"
   },
   "types": "types/my-element.d.ts",
-  "files": ["dist", "types"],
+  "files": [
+    "dist",
+    "types"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -19,7 +22,7 @@
   "dependencies": {
     "@shoelace-style/shoelace": "^2.20.1",
     "iconify-icon": "^3.0.2",
-    "lit": "^2.2.8",
+    "lit": "^3.3.2",
     "monaco-editor": "^0.55.1"
   },
   "devDependencies": {
@@ -30,6 +33,8 @@
     "vite-tsconfig-paths": "^6.0.3"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

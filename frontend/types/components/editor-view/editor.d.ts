@@ -1,5 +1,5 @@
 import { LitElement } from 'lit';
-export declare class EditorView extends LitElement {
+export declare class Editor extends LitElement {
     private editor?;
     private container;
     createRenderRoot(): this;
@@ -9,6 +9,6 @@ export declare class EditorView extends LitElement {
 }
 declare global {
     export interface HTMLElementTagNameMap {
-        'editor-view': EditorView;
+        'editor-view': Editor;
     }
 }
