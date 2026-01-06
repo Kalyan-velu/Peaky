@@ -7,8 +7,10 @@ import '@shoelace-style/shoelace/dist/components/menu-item/menu-item';
 import '@shoelace-style/shoelace/dist/components/menu/menu';
 import 'iconify-icon/dist/iconify-icon';
 import { LitElement } from 'lit';
+import { ProjectContext } from '@/contexts/folder-context';
 export declare class FileMenuItem extends LitElement {
     static styles: import("lit").CSSResult;
+    project: ProjectContext;
     render(): import("lit").TemplateResult<1>;
     private _openFolder;
     private _handleMenuSelect;

@@ -1,15 +1,17 @@
-import { css, html, LitElement } from 'lit';
-import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
+import type { SlMenuItem } from '@shoelace-style/shoelace';
+import { OpenFolder } from '@/go-runtime/editor/Folder';
 import '@shoelace-style/shoelace/dist/components/button/button';
+import '@shoelace-style/shoelace/dist/components/divider/divider';
+import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
+import '@shoelace-style/shoelace/dist/components/icon-button/icon-button';
+import '@shoelace-style/shoelace/dist/components/icon/icon';
 import '@shoelace-style/shoelace/dist/components/menu-item/menu-item';
 import '@shoelace-style/shoelace/dist/components/menu/menu';
-import '@shoelace-style/shoelace/dist/components/divider/divider';
-import '@shoelace-style/shoelace/dist/components/icon/icon';
-import { customElement } from 'lit/decorators.js';
 import 'iconify-icon/dist/iconify-icon';
-import '@shoelace-style/shoelace/dist/components/icon-button/icon-button';
-import type { SlMenuItem } from '@shoelace-style/shoelace';
-import { OpenFolder } from '@/go-runtime/editor/FileHandler';
+import { css, html, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { ProjectContext, projectContext } from '@/contexts/folder-context';
+import { consume } from '@lit/context';
 
 @customElement('file-menu-item')
 export class FileMenuItem extends LitElement {
@@ -39,8 +41,29 @@ export class FileMenuItem extends LitElement {
     }
   `;
 
+  @consume({ context: projectContext, subscribe: true })
+  @property({ attribute: false })
+  public project: ProjectContext = {
+    currentProject: null,
+    content: null,
+  };
+
+  render() {
+    return html`
+      <sl-dropdown distance="20">
+        <button class="menu-button" slot="trigger">File</button>
+        <sl-menu @sl-select="${this._handleMenuSelect}">
+          <sl-menu-item value="new">New</sl-menu-item>
+          <sl-menu-item value="open">Open ...</sl-menu-item>
+          <sl-menu-item value="close">Close Project</sl-menu-item>
+        </sl-menu>
+      </sl-dropdown>
+    `;
+  }
+
   private async _openFolder() {
     const folder = await OpenFolder();
+
     if (folder) {
       this.dispatchEvent(
         new CustomEvent('folder-selected', {
@@ -52,26 +75,11 @@ export class FileMenuItem extends LitElement {
     }
   }
 
-  // TODO - Find a way to get the menu item value from the dropdown
   private async _handleMenuSelect(event: CustomEvent<{ item: SlMenuItem }>) {
     const item = event.detail.item;
-    console.log(event, item);
     if (item.value === 'open') {
       await this._openFolder();
     }
-  }
-
-  protected render() {
-    return html`
-      <sl-dropdown distance="20">
-        <button class="menu-button" slot="trigger">File</button>
-        <sl-menu @sl-select="${this._handleMenuSelect}">
-          <sl-menu-item value="new">New</sl-menu-item>
-          <sl-menu-item value="open">Open ...</sl-menu-item>
-          <sl-menu-item value="close">Close Project</sl-menu-item>
-        </sl-menu>
-      </sl-dropdown>
-    `;
   }
 }
 

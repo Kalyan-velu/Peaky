@@ -1,9 +1,6 @@
 @import "@shoelace-style/shoelace/dist/themes/light.css";
 @import "@shoelace-style/shoelace/dist/themes/dark.css";
 
-/* ==========================================================================
-   Typography
-   ========================================================================== */
 @font-face {
   font-family: "Nunito";
   font-style: normal;
@@ -30,11 +27,6 @@
   --rosy-granite: hsla(330, 5%, 54%, 1);
 }
 
-/* ==========================================================================
-   Themes
-   ========================================================================== */
-
-/* Light Theme */
 :host,
 .sl-theme-light {
   color-scheme: light;
@@ -46,7 +38,6 @@
   --hover-bg: var(--sl-color-neutral-200);
   --close-hover-bg: var(--sl-color-danger-600);
   --border-color: var(--sl-color-neutral-200);
-
 
   /*Tabs Panel Layout*/
   --tab-panel-bg: inherit;
@@ -147,9 +138,6 @@
   --sl-color-danger-950: #fef2f2;
 }
 
-/* ==========================================================================
-   Global Reset & Base
-   ========================================================================== */
 *,
 *::before,
 *::after {
@@ -168,14 +156,10 @@ body {
   font-family: var(--font-family), sans-serif;
 }
 
-/* Prevent FOUC for undefined custom elements */
 :not(:defined) {
   visibility: hidden;
 }
 
-/* ==========================================================================
-   Layout
-   ========================================================================== */
 main-view {
   height: 100dvh;
   display: flex;
@@ -188,10 +172,6 @@ main {
   width: 100%;
   flex: 1;
 }
-
-/* ==========================================================================
-   Components
-   ========================================================================== */
 
 .editor-wrapper {
   position: relative;
