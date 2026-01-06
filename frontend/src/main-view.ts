@@ -44,8 +44,11 @@ export class MainView extends LitElement {
 
   private _handleFolderSelected(event: CustomEvent<editor.FolderContent>) {
     const folder = event.detail;
+    console.log(folder);
     this.project = {
-      currentProject: folder?.file_path ?? null,
+      // TODO - Fix in the backend - from backend receiving content as object but type is wrong
+      //@ts-expect-error false error
+      currentProject: folder?.content?.file_path ?? null,
       content: folder,
     };
   }

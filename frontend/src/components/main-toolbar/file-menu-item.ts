@@ -9,9 +9,7 @@ import '@shoelace-style/shoelace/dist/components/menu-item/menu-item';
 import '@shoelace-style/shoelace/dist/components/menu/menu';
 import 'iconify-icon/dist/iconify-icon';
 import { css, html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { ProjectContext, projectContext } from '@/contexts/folder-context';
-import { consume } from '@lit/context';
+import { customElement } from 'lit/decorators.js';
 
 @customElement('file-menu-item')
 export class FileMenuItem extends LitElement {
@@ -40,13 +38,6 @@ export class FileMenuItem extends LitElement {
       font-size: var(--sl-font-size-x-small);
     }
   `;
-
-  @consume({ context: projectContext, subscribe: true })
-  @property({ attribute: false })
-  public project: ProjectContext = {
-    currentProject: null,
-    content: null,
-  };
 
   render() {
     return html`
