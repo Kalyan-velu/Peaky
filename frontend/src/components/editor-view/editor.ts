@@ -42,6 +42,7 @@ export class Editor extends LitElement {
     this.editor = monaco.editor.create(this.container, {
       value: `<div>Hello World</div>`,
       language: 'html',
+      theme: 'vs-dark',
       automaticLayout: true,
     });
   }

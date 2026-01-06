@@ -8,31 +8,26 @@ import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.j
 import '@shoelace-style/shoelace/dist/shoelace.js';
 import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 import './components/editor-view/tabs-panel';
-
+import { projectContext, ProjectContext } from '@/contexts/folder-context';
+import { provide } from '@lit/context';
+import { editor } from '@/go-runtime/models';
 
 setBasePath('@shoelace-style/shoelace/dist/');
 
 @customElement('main-view')
 export class MainView extends LitElement {
-  override createRenderRoot() {
-    return this;
-  }
+  @provide({ context: projectContext })
+  @property({ attribute: false })
+  project: ProjectContext = {
+    currentProject: null,
+    content: null,
+  };
 
   @property()
   resultText = 'No folder selected';
 
-  private async _handleFolderSelected(e: CustomEvent | PointerEvent) {
-    let folder: string;
-    if (e instanceof CustomEvent) {
-      folder = e.detail;
-    } else {
-      const { OpenFolder } = await import('@/go-runtime/editor/FileHandler');
-
-      folder = await OpenFolder();
-    }
-    if (folder) {
-      this.resultText = folder;
-    }
+  override createRenderRoot() {
+    return this;
   }
 
   render() {
@@ -45,6 +40,17 @@ export class MainView extends LitElement {
         </div>
       </main>
     `;
+  }
+
+  private _handleFolderSelected(event: CustomEvent<editor.FolderContent>) {
+    const folder = event.detail;
+    console.log(folder);
+    this.project = {
+      // TODO - Fix in the backend - from backend receiving content as object but type is wrong
+      //@ts-expect-error false error
+      currentProject: folder?.content?.file_path ?? null,
+      content: folder,
+    };
   }
 }
 

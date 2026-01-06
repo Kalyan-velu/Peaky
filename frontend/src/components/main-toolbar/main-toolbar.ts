@@ -4,6 +4,8 @@ import 'iconify-icon/dist/iconify-icon';
 import './window-controls';
 import '@shoelace-style/shoelace/dist/components/icon-button/icon-button';
 import './file-menu-item';
+import { consume } from '@lit/context';
+import { ProjectContext, projectContext } from '@/contexts/folder-context';
 
 @customElement('main-toolbar')
 export class MainToolbar extends LitElement {
@@ -51,14 +53,19 @@ export class MainToolbar extends LitElement {
     }
   `;
 
-  @property()
-  projectTitle = 'No Project Open';
+  @consume({ context: projectContext, subscribe: true })
+  @property({ attribute: false })
+  public project: ProjectContext = {
+    currentProject: null,
+    content: null,
+  };
 
   render() {
     return html`
       <nav class="toolbar">
         <div class="left-section">
           <file-menu-item class="text-menu-item"></file-menu-item>
+          <div class="selected">${this.project.currentProject}</div>
         </div>
         <div class="right-section">
           <window-controls></window-controls>

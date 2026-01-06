@@ -14,8 +14,7 @@ import (
 var assets embed.FS
 
 func main() {
-	fileHandler := editor.NewFileHandler()
-
+	fileHandler := editor.NewFolder()
 	err := wails.Run(&options.App{
 		Title:  "Peaky",
 		Width:  1024,
